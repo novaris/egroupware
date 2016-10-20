@@ -598,7 +598,7 @@ class infolog_so
 		else
 		{
 			if (!isset($to_write['info_id_parent'])) $to_write['info_id_parent'] = 0;	// must not be null
-
+			unset($to_write['info_id']); // bug postgresql serial type
 			$this->db->insert($this->info_table,$to_write,false,__LINE__,__FILE__);
 			$info_id = $this->data['info_id'] = $this->db->get_last_insert_id($this->info_table,'info_id');
 		}
